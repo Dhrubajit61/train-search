@@ -1,4 +1,6 @@
 export default async (request) => {
+    // 👇 ADD IT HERE (top of the function)
+    console.log("Edge function hit");
     const url = new URL(request.url);
     const trainNo = url.searchParams.get("trainNo");
 
