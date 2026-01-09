@@ -1,0 +1,171 @@
+body {
+  font-family: Arial;
+  width: 600px;
+  font-size: 18px;
+}
+
+.search-box input,
+.search-box select {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 6px;
+}
+
+.train-card {
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #213d77;
+  background-color: #55e9e1;
+  padding: 10px;
+  margin: 5px;
+}
+.route {
+  background-color: #ffd100;
+  margin: 5px;
+}
+.class-box {
+  display: inline-block;
+  min-width: 100px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.chance {
+  color: green;
+}
+.field {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%; /* exactly below input */
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions div {
+  padding: 6px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background: #e9f0ff;
+}
+.fare {
+  background-color: #14efb0;
+  padding: 5px;
+  border-radius: 5px;
+}
+.class-box {
+  display: inline-block;
+  width: 90px;
+  padding: 6px;
+  margin: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #999;
+}
+
+/* Base */
+.class-box {
+  display: inline-block;
+  width: 95px;
+  padding: 6px;
+  margin: 4px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+/* ✅ AVAILABLE – soft yellow */
+.avl-available {
+  background: #a1ffad;
+  border-color: #f0e68c;
+  color: #5a4b00;
+}
+
+/* 🟦 RAC – soft blue */
+.avl-rac {
+  background: #eaf4ff;
+  border-color: #b8daff;
+  color: #084298;
+}
+
+/* 🟥 WL – light red / pink */
+.avl-wl {
+  background: #f3ca72;
+  border-color: #f5b7b1;
+  color: #842029;
+}
+
+/* 🔴 NOT AVAILABLE / REGRET – darker red */
+.avl-not-available {
+  background: #e46f6f;
+  border-color: #dc3545;
+  color: #810000;
+}
+
+/* fallback */
+.avl-unknown {
+  background: #f1f1f1;
+  color: #333;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 6px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: #213d77;
+  color: #fff;
+}
+
+#routeBody {
+  padding: 10px;
+}
+
+.check-route {
+  cursor: pointer;
+  color: #0d6efd;
+  font-size: 14px;
+}

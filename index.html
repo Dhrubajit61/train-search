@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Train Search</title>
+    <link rel="stylesheet" href="app.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/3ba15f16ff.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="search-box">
+      <div class="field">
+        <input id="fromStation" placeholder="From Station" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <input id="toStation" placeholder="To Station" autocomplete="off" />
+      </div>
+
+      <input type="date" id="journeyDate" />
+
+      <select id="quota">
+        <option value="GN">General</option>
+        <option value="TQ">Tatkal</option>
+        <option value="SS">Senior Citizen</option>
+        <option value="LD">Ladies</option>
+      </select>
+
+      <button id="searchBtn">Search Trains</button>
+    </div>
+
+    <div id="trainList"></div>
+    <div id="routeModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span id="routeTitle"></span>
+          <button id="closeModal">✖</button>
+        </div>
+        <div id="routeBody">Loading...</div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
