@@ -1,31 +1,49 @@
 body {
-  font-family: Arial;
-  width: 600px;
-  font-size: 18px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  max-width: 80%;
+  margin-inline: auto;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .search-box input,
-.search-box select {
+.search-box select,
+.search-box button {
   width: 100%;
-  margin-bottom: 6px;
-  padding: 6px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+#searchBtn {
+  background: #213d77;
+  color: white;
+  border: none;
+  border-radius: 6px;
 }
 
 .train-card {
-  border: 1px solid #ddd;
-  padding: 8px;
-  margin-top: 10px;
+  padding: 10px;
+  margin-top: 26px;
+  border-radius: 8px;
+  background: #dceafb85;
+  border: 2px solid #b3cbef;
 }
 
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  gap: 6px;
   font-weight: bold;
-  color: #213d77;
-  background-color: #55e9e1;
-  padding: 10px;
-  margin: 5px;
 }
+
 .route {
   background-color: #ffd100;
   margin: 5px;
@@ -129,6 +147,7 @@ body {
   color: #333;
 }
 .modal {
+  max-height: 100vh;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -143,12 +162,9 @@ body {
 }
 
 .modal-content {
-  background: #fff;
-  width: 90%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow: auto;
-  border-radius: 6px;
+  width: 95%;
+  max-width: 100%;
+  border-radius: 10px;
 }
 
 .modal-header {
@@ -162,6 +178,10 @@ body {
 
 #routeBody {
   padding: 10px;
+  background: #ffefca;
+  max-height: 65vh; /* controls visible height */
+  overflow-y: auto; /* ENABLE vertical scroll */
+  overflow-x: hidden;
 }
 
 .check-route {

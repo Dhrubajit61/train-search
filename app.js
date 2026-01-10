@@ -148,6 +148,7 @@ async function showRoutePopup(trainNo, trainName) {
     modal.classList.remove("hidden");
 
     try {
+
         const res = await fetch(
             `/.netlify/functions/trainRoute?trainNo=${trainNo}`,
             { cache: "no-store" }
@@ -166,6 +167,32 @@ async function showRoutePopup(trainNo, trainName) {
             body.innerHTML = "Route table not found";
             return;
         }
+        // ✅ REMOVE LAST TR FROM TBODY
+        const tbody = table.querySelector("tbody");
+        if (tbody && tbody.lastElementChild) {
+            tbody.removeChild(tbody.lastElementChild);
+        }
+        // 🔥 REMOVE href FROM ALL .stationHover LINKS
+        table.querySelectorAll("a.stationHover").forEach(a => {
+            a.removeAttribute("href");
+            a.removeAttribute("target");
+            a.style.pointerEvents = "none";
+            a.style.cursor = "default";
+        });
+        table.querySelectorAll("tbody tr").forEach(row => {
+            const cells = row.querySelectorAll("td");
+            const labels = ["Station", "Arr", "Dep", "Halt", "Day", "Distance"];
+
+            cells.forEach((td, i) => {
+                td.setAttribute("data-label", labels[i] || "");
+            });
+        });
+        const wrapper = document.createElement("div");
+        wrapper.className = "route-table-wrapper";
+        wrapper.appendChild(table);
+
+        body.innerHTML = "";
+        body.appendChild(wrapper);
 
         body.innerHTML = "";
         body.appendChild(table);
