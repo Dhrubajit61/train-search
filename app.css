@@ -20,6 +20,31 @@ body {
   padding: 12px;
   font-size: 16px;
 }
+.swap-container {
+  position: relative;
+}
+.swapdiv {
+  display: flex;
+  justify-content: center;
+}
+
+#swapBtn {
+  position: relative;
+  padding: 5px;
+  right: 10px;
+  top: 50%;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#swapBtn:hover {
+  background: #f0f0f0;
+}
 
 #searchBtn {
   background: #213d77;
@@ -47,7 +72,7 @@ body {
 .route {
   background-color: #ffd100;
   margin: 5px;
-  padding:4px;
+  padding: 4px;
 }
 .class-box {
   display: inline-block;

@@ -35,6 +35,17 @@ function setupAutocomplete(inputId, onSelect) {
         field.appendChild(box);
     });
 }
+document.getElementById("swapBtn").onclick = () => {
+    // swap input values
+    const fromInput = document.getElementById("fromStation");
+    const toInput = document.getElementById("toStation");
+
+    [fromInput.value, toInput.value] = [toInput.value, fromInput.value];
+
+    // swap station codes
+    [fromCode, toCode] = [toCode, fromCode];
+};
+
 
 function closeSuggestions(container = document) {
     container.querySelectorAll(".suggestions").forEach(e => e.remove());
