@@ -47,6 +47,7 @@ body {
 .route {
   background-color: #ffd100;
   margin: 5px;
+  padding:5px;
 }
 .class-box {
   display: inline-block;
