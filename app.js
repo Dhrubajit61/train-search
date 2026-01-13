@@ -72,6 +72,31 @@ document.getElementById("searchBtn").onclick = async () => {
 
     renderTrains(json.data.trainList, quota);
 };
+async function fetchPremiumTatkalAvailability(train, cls, doj) {
+    const payload = {
+        source: train.fromStnCode,
+        destination: train.toStnCode,
+        class: cls,
+        quota: "PT",
+        doj: doj.replaceAll("-", ""),
+        trainNumber: train.trainNumber,
+        moreThanOneDay: false,
+        status: ""
+    };
+
+    const res = await fetch("/.netlify/functions/ptAvailability", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
+
+
+    const json = await res.json();
+    return json.response?.availability_status;
+}
+
 function renderTrains(trains, quota) {
     const container = document.getElementById("trainList");
     container.innerHTML = "";
@@ -108,30 +133,73 @@ function renderTrains(trains, quota) {
 
 
 }
+// function renderClasses(train, quota) {
+//     const cache =
+//         quota === "TQ"
+//             ? train.availabilityCacheTatkal
+//             : train.availabilityCache;
+
+//     let html = "";
+
+//     for (let cls in cache) {
+//         const a = cache[cls];
+//         const statusClass = getAvailabilityClass(a.availability || "");
+
+//         html += `
+//       <div class="class-box ${statusClass}">
+//         <div><b>${cls}</b></div>
+//         <div>${a.availabilityDisplayName || a.availability}</div>
+//         <div>${a.predictionDisplayName || ""}</div>
+//         <div>₹ ${a.fare}</div>
+//       </div>
+//     `;
+//     }
+
+//     return html || "<i>No availability</i>";
+// }
 function renderClasses(train, quota) {
+    let html = "";
+
+    // 🔥 PREMIUM TATKAL SPECIAL FLOW
+    if (quota === "PT") {
+        for (let cls in train.availabilityCacheTatkal) {
+            html += `
+              <div class="class-box avl-loading" data-train="${train.trainNumber}" data-class="${cls}">
+                 <div><b>${cls}</b></div>
+                 <div>Checking PT...</div>
+              </div>
+            `;
+        }
+
+        // async load PT data
+        setTimeout(() => loadPTAvailability(train), 0);
+
+        return html;
+    }
+
+    // ✅ NORMAL FLOW (unchanged)
     const cache =
         quota === "TQ"
             ? train.availabilityCacheTatkal
             : train.availabilityCache;
-
-    let html = "";
 
     for (let cls in cache) {
         const a = cache[cls];
         const statusClass = getAvailabilityClass(a.availability || "");
 
         html += `
-      <div class="class-box ${statusClass}">
-        <div><b>${cls}</b></div>
-        <div>${a.availabilityDisplayName || a.availability}</div>
-        <div>${a.predictionDisplayName || ""}</div>
-        <div>₹ ${a.fare}</div>
-      </div>
-    `;
+          <div class="class-box ${statusClass}">
+            <div><b>${cls}</b></div>
+            <div>${a.availabilityDisplayName || a.availability}</div>
+            <div>${a.predictionDisplayName || ""}</div>
+            <div>₹ ${a.fare}</div>
+          </div>
+        `;
     }
 
     return html || "<i>No availability</i>";
 }
+
 
 function getAvailabilityClass(avlText = "") {
     const t = avlText.toUpperCase().trim();
@@ -149,6 +217,34 @@ function getAvailabilityClass(avlText = "") {
 
     return "avl-unknown";
 }
+async function loadPTAvailability(train) {
+    const date = document.getElementById("journeyDate").value;
+    const doj = date.split("-").reverse().join("-");
+
+    for (let cls in train.availabilityCacheTatkal) {
+        try {
+            const pt = await fetchPremiumTatkalAvailability(train, cls, doj);
+            if (!pt) continue;
+
+            const box = document.querySelector(
+                `.class-box[data-train="${train.trainNumber}"][data-class="${cls}"]`
+            );
+
+            if (!box) continue;
+
+            box.className = `class-box ${getAvailabilityClass(pt.availability_status)}`;
+            box.innerHTML = `
+                <div><b>${cls}</b></div>
+                <div>${pt.availability_status}</div>
+                <div>₹ ${pt.price}</div>
+                <div>${pt.last_updated_on}</div>
+            `;
+        } catch (e) {
+            console.error("PT fetch failed", e);
+        }
+    }
+}
+
 async function showRoutePopup(trainNo, trainName) {
     const modal = document.getElementById("routeModal");
     const body = document.getElementById("routeBody");

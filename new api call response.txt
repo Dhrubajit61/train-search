@@ -1,0 +1,31 @@
+{
+    "response": {
+        "availability_status": {
+            "class": "3A",
+            "status": "AVL-10",
+            "price": 1065,
+            "quota": {
+                "key": "PT"
+            },
+            "status_color": "#18A160",
+            "is_bookable": true,
+            "toast_message": "",
+            "flash": true,
+            "enable_tg": false,
+            "enable_fc": true,
+            "last_updated_on": "Moments ago",
+            "availability_status": "AVL 10",
+            "status_bg_color": "#F4FAF4",
+            "new_status_color": "#E9F6EA",
+            "bottom_text": "",
+            "bottom_bg_color": "#EFF3F8",
+            "availablityType": "1",
+            "availability_type": 1,
+            "date": "14-01-2026"
+        },
+        "status_key": "-AVL-PT",
+        "otherDayAvailList": []
+    },
+    "error": "",
+    "code": ""
+}
