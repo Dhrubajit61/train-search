@@ -1,0 +1,14 @@
+.agebutton {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
