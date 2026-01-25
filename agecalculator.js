@@ -1,21 +1,43 @@
 // Auto insert "/" in DD/MM/YYYY format
+// document.getElementById("dob").addEventListener("input", function () {
+//     let v = this.value.replace(/\D/g, "").substring(0, 8); // only digits
+//     if (v.length >= 5) this.value = v.replace(/(\d{2})(\d{2})(\d{1,4})/, "$1/$2/$3");
+//     else if (v.length >= 3) this.value = v.replace(/(\d{2})(\d{1,2})/, "$1/$2");
+//     else this.value = v;
+// });
 document.getElementById("dob").addEventListener("input", function () {
     let v = this.value.replace(/\D/g, "").substring(0, 8); // only digits
-    if (v.length >= 5) this.value = v.replace(/(\d{2})(\d{2})(\d{1,4})/, "$1/$2/$3");
-    else if (v.length >= 3) this.value = v.replace(/(\d{2})(\d{1,2})/, "$1/$2");
-    else this.value = v;
+
+    if (v.length >= 5) {
+        this.value = v.replace(/(\d{2})(\d{2})(\d{1,4})/, "$1 / $2 / $3");
+    } else if (v.length >= 3) {
+        this.value = v.replace(/(\d{2})(\d{1,2})/, "$1 / $2");
+    } else {
+        this.value = v;
+    }
 });
+// ⬅️ NEW: Trigger calculateAge() when pressing Enter
+document.getElementById("dob").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault(); // stops form submission if inside a form
+        calculateAge();
+    }
+});
+
 
 function calculateAge() {
     const dob = document.getElementById("dob").value;
 
-    // Validate format
-    if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dob)) {
+    // Validate format DD / MM / YYYY (with spaces)
+    if (!/^\d{2}\s\/\s\d{2}\s\/\s\d{4}$/.test(dob)) {
         document.getElementById("result").innerHTML = "Invalid date format!";
         return;
     }
 
-    const [day, month, year] = dob.split("/").map(Number);
+    // Remove spaces before splitting
+    const cleanDob = dob.replace(/\s+/g, "");
+    const [day, month, year] = cleanDob.split("/").map(Number);
+
     const birthDate = new Date(year, month - 1, day);
 
     if (birthDate > new Date()) {

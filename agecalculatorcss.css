@@ -12,3 +12,11 @@
   font-size: 20px;
   font-weight: bold;
 }
+#dob {
+  background-color: #fdfdfdc9;
+  border: 1px solid #9b9898;
+}
+#dob:focus {
+  background-color: #fdfdfdc9;
+  outline: 1px solid #9b9898;
+}

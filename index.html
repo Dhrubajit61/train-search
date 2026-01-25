@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -36,18 +36,25 @@
 
         <input type="date" id="journeyDate" />
 
-        <select id="quota">
-          <option value="GN">General</option>
-          <option value="TQ">Tatkal</option>
-          <option value="SS">Senior Citizen</option>
-          <option value="LD">Ladies</option>
-        </select>
+        <div class="field">
+          <select id="quota">
+            <option value="GN">General</option>
+            <option value="TQ">Tatkal</option>
+            <option value="SS">Senior Citizen</option>
+            <option value="LD">Ladies</option>
+          </select>
+        </div>
 
         <button id="searchBtn">Search Trains</button>
       </div>
       <div class="box">
         <h2>Age Calculator</h2>
-        <input type="text" id="dob" maxlength="10" placeholder="DDMMYYYY" />
+        <input
+          type="text"
+          id="dob"
+          maxlength="14"
+          placeholder="DD / MM / YYYY"
+        />
         <button class="agebutton" onclick="calculateAge()">
           Calculate Age
         </button>

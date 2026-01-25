@@ -1,3 +1,7 @@
+html {
+  height: 300%;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,6 +9,27 @@ body {
   font-size: 16px;
   max-width: 90%;
   margin-inline: auto;
+  background:
+    linear-gradient(
+      135deg,
+      hsl(0deg 2.94% 69.17%) 0,
+      hsla(236.6, 0%, 53.52%, 0) 70%
+    ),
+    linear-gradient(
+      25deg,
+      hsl(220.75deg 7.61% 53.29%) 10%,
+      hsla(220.75, 34.93%, 26.52%, 0) 80%
+    ),
+    linear-gradient(
+      315deg,
+      hsla(46.42, 36.62%, 83.92%, 1) 15%,
+      hsla(46.42, 36.62%, 83.92%, 0) 80%
+    ),
+    linear-gradient(
+      245deg,
+      hsla(191.32, 50.68%, 56.45%, 1) 100%,
+      hsla(191.32, 50.68%, 56.45%, 0) 70%
+    );
 }
 .container {
   display: flex;
@@ -38,6 +63,20 @@ body {
   width: 94%;
   padding: 12px;
   font-size: 16px;
+  background-color: #fdfdfdc9;
+  border: 1px solid #9b9898;
+}
+.search-box select {
+  width: 97% !important;
+}
+#searchBtn {
+  width: 97% !important;
+}
+
+.search-box input,
+.search-box select,
+.search-box button :focus {
+  outline: 1px solid #9b9898;
 }
 .swap-container {
   position: relative;
@@ -76,7 +115,31 @@ body {
   padding: 10px;
   margin-top: 26px;
   border-radius: 8px;
-  background: #dceafb85;
+  /* background: #dceafb85; */
+  background:
+    linear-gradient(
+      135deg,
+      hsl(0deg 0.99% 84.89%) 0,
+      hsla(236.6, 0%, 53.52%, 0) 70%
+    ),
+    linear-gradient(
+      25deg,
+      hsl(220.75deg 7.61% 53.29%) 10%,
+      hsla(220.75, 34.93%, 26.52%, 0) 80%
+    ),
+    linear-gradient(
+      315deg,
+      hsla(46.42, 36.62%, 83.92%, 1) 15%,
+      hsla(46.42, 36.62%, 83.92%, 0) 80%
+    ),
+    linear-gradient(
+      245deg,
+      hsla(191.32, 50.68%, 56.45%, 1) 100%,
+      hsla(191.32, 50.68%, 56.45%, 0) 70%
+    );
+  box-shadow:
+    0px 10px 13px -7px #2c2a2ae0,
+    5px 5px 15px 5px rgb(0 0 0 / 11%);
   border: 2px solid #b3cbef;
 }
 
