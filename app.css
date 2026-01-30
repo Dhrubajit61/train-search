@@ -1,5 +1,5 @@
 html {
-  min-height: 300%;
+  height: 300%;
 }
 
 body {
@@ -228,7 +228,8 @@ body {
 .avl-available {
   background: #a1ffad;
   border-color: #55b765;
-  color: #5a4b00;
+  /* color: #5a4b00; */
+  color: #362e04;
 }
 
 /* 🟦 RAC – soft blue */
