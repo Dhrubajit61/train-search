@@ -47,8 +47,11 @@ body {
 }
 .box {
   width: 20%;
-  border: 1px solid rgb(70, 200, 210);
-  padding: 18px;
+  border: 1px solid rgb(129 149 148);
+  padding: 23px;
+  box-shadow:
+    0px 10px 13px -7px #403f3fe0,
+    5px 5px 15px 5px rgb(0 0 0 / 11%);
 }
 .box input {
   width: 100%;
@@ -224,7 +227,7 @@ body {
 /* ✅ AVAILABLE – soft yellow */
 .avl-available {
   background: #a1ffad;
-  border-color: #f0e68c;
+  border-color: #55b765;
   color: #5a4b00;
 }
 
