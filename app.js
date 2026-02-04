@@ -72,30 +72,30 @@ document.getElementById("searchBtn").onclick = async () => {
 
     renderTrains(json.data.trainList, quota);
 };
-async function fetchPremiumTatkalAvailability(train, cls, doj) {
-    const payload = {
-        source: train.fromStnCode,
-        destination: train.toStnCode,
-        class: cls,
-        quota: "PT",
-        doj: doj.replaceAll("-", ""),
-        trainNumber: train.trainNumber,
-        moreThanOneDay: false,
-        status: ""
-    };
+// async function fetchPremiumTatkalAvailability(train, cls, doj) {
+//     const payload = {
+//         source: train.fromStnCode,
+//         destination: train.toStnCode,
+//         class: cls,
+//         quota: "PT",
+//         doj: doj.replaceAll("-", ""),
+//         trainNumber: train.trainNumber,
+//         moreThanOneDay: false,
+//         status: ""
+//     };
 
-    const res = await fetch("/.netlify/functions/ptAvailability", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
+//     const res = await fetch("/.netlify/functions/ptAvailability", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(payload)
+//     });
 
 
-    const json = await res.json();
-    return json.response?.availability_status;
-}
+//     const json = await res.json();
+//     return json.response?.availability_status;
+// }
 
 function renderTrains(trains, quota) {
     const container = document.getElementById("trainList");
