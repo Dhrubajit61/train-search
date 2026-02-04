@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="table.css" />
+    <link rel="stylesheet" href="datetime.css" />
 
     <script
       src="https://kit.fontawesome.com/3ba15f16ff.js"
@@ -18,6 +19,13 @@
   </head>
   <body>
     <div class="container">
+      <div class="clock-box">
+        <div class="clockicon">
+          <img src="clock-icon-Photoroom.png" alt="" />
+        </div>
+        <div class="time" id="time"></div>
+        <div class="date" id="date"></div>
+      </div>
       <div class="search-box">
         <div class="field">
           <input
@@ -40,6 +48,7 @@
           <select id="quota">
             <option value="GN">General</option>
             <option value="TQ">Tatkal</option>
+            <option value="PT">Premium Tatkal</option>
             <option value="SS">Senior Citizen</option>
             <option value="LD">Ladies</option>
           </select>
@@ -72,6 +81,7 @@
         <div id="routeBody">Loading...</div>
       </div>
     </div>
+    <script src="datetime.js"></script>
     <script src="agecalculator.js"></script>
     <script src="app.js"></script>
   </body>

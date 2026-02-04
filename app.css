@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 10px;
   font-size: 16px;
-  max-width: 90%;
+  max-width: 95%;
   margin-inline: auto;
   background:
     linear-gradient(
@@ -36,7 +36,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   gap: 50px;
-  margin-left: 54px;
+  margin-left: 5px;
 }
 
 .search-box {
